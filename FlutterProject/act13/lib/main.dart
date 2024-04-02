@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'details.dart';
 
 void main() {
   runApp(const MaterialApp(home: Home()));
@@ -14,8 +15,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   TextEditingController _sName = TextEditingController();
   TextEditingController _sAge = TextEditingController();
-  String gender = 'Male';
-  bool ck1 = false, ck2 = false, ck3 = false;
+  String gender = '', ck1 = '', ck2 = '', ck3 = '';
+  bool pain = false, play = false, gard = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.blue,
       ),
       body: Container(
-        padding: EdgeInsets.all(30),
+        padding: const EdgeInsets.all(30),
         child: ListView(children: [
           TextFormField(
             controller: _sName,
@@ -52,7 +54,7 @@ class _HomeState extends State<Home> {
               const Text("Gender"),
               Expanded(
                   child: RadioListTile(
-                      title: Text("Male"),
+                      title: const Text("Male"),
                       value: 'Male',
                       groupValue: gender,
                       onChanged: (value) {
@@ -62,7 +64,7 @@ class _HomeState extends State<Home> {
                       })),
               Expanded(
                   child: RadioListTile(
-                      title: Text("Female"),
+                      title: const Text("Female"),
                       value: 'Female',
                       groupValue: gender,
                       onChanged: (value) {
@@ -72,39 +74,75 @@ class _HomeState extends State<Home> {
                       }))
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           CheckboxListTile(
-              title: Text("Painting"),
-              value: ck1,
+              title: const Text("Painting"),
+              value: pain,
               onChanged: (newval) {
                 setState(() {
-                  ck1 = newval!;
+                  pain = newval!;
+                   if (pain) {
+                    ck1 = 'Painting';
+                  } else {
+                    ck1 = '';
+                  }
                 });
               }),
           CheckboxListTile(
-              title: Text("Playing"),
-              value: ck2,
+              title: const Text("Playing"),
+              value: play,
               onChanged: (newval) {
                 setState(() {
-                  ck2 = newval!;
+                  play = newval!;
+                  if (play) {
+                    ck2 = 'Playing';
+                  } else {
+                    ck2 = '';
+                  }
                 });
               }),
           CheckboxListTile(
-              title: Text("Gardening"),
-              value: ck3,
+              title: const Text("Gardening"),
+              value: gard,
               onChanged: (newval) {
                 setState(() {
-                  ck3 = newval!;
+                  gard = newval!;
+                   if (gard) {
+                    ck3 = 'Gardening';
+                  } else {
+                    ck3 = '';
+                  }
                 });
               }),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          FloatingActionButton(onPressed: () {
-            setState(() {});
-          })
+          FloatingActionButton(
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              child: const Text(
+                "Submit Form",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                setState(() {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Details(
+                      sn: _sName.text,
+                      age: _sAge.text,
+                      gend: gender,
+                      ck1: ck1,
+                      ck2: ck2,
+                      ck3: ck3,
+                    );
+                  }));
+                });
+              })
         ]),
       ),
     );
