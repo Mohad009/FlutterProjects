@@ -110,7 +110,7 @@ class _HomeState extends State<Home> {
              child: Text("Calculate")),
 
             SizedBox(height: 20,),
-            Text("Total Amount: $price")
+            Text("Total Amount: "+price.toString())
         ],
       ),
     );
