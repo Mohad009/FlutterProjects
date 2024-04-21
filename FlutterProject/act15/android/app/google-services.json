@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "869233426454",
+    "project_id": "act15-88252",
+    "storage_bucket": "act15-88252.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869233426454:android:1bb37fa9389edfee8a3537",
+        "android_client_info": {
+          "package_name": "com.example.act15"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0SFZyCmYpOEFHKfB_xrCjU68rpf5fwzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
