@@ -1,4 +1,5 @@
 import 'package:act15/homepage.dart';
+import 'package:act15/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,13 @@ class _LoginPageState extends State<LoginPage> {
         email: _user.text.trim(), password: _pass.text.trim());
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomePage()));
+  }
+
+  @override
+  void dispose() {
+    _user.dispose();
+    _pass.dispose();
+    super.dispose();
   }
 
   @override
@@ -73,7 +81,10 @@ class _LoginPageState extends State<LoginPage> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               GestureDetector(
-                onTap: () => print('Hello'),
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => RegisterPage()));
+                },
                 child: const Text('Register',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.blue)),
