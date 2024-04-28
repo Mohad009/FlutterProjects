@@ -10,7 +10,12 @@ void main() async {
           appId: '1:869233426454:android:1bb37fa9389edfee8a3537',
           messagingSenderId: '869233426454',
           projectId: 'act15-88252'));
-  runApp(MaterialApp(home: Home()));
+  runApp(MaterialApp(
+    home: AspectRatio(
+      aspectRatio: 9/16,
+      child: Home(),
+    ),
+    ));
 }
 
 class Home extends StatelessWidget {
